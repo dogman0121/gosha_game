@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+	<button id='who_gosha'>Кто есть гоша?</button>
+	<p>У вас сейчас <span id='counter_gosha'>0</span> гош.</p>
+	<p id='log'>
+		<p>Вы съели <span id='eaten_gosha'>0</span> гош.</p>
+	<p>
+	<button id='eat_gosha'>Съесть 10 гош</button>
+	<script>
+		let button = document.getElementById('who_gosha');
+		let used = false;
+		button.onclick = () => {
+			if (!used){
+				button.textContent = 'Гоша = Ваня Городнов';
+				used = true;
+			}
+			else {
+				button.textContent = 'Кто есть гоша?';
+				used = false;
+			}
+		}
+		
+		let cnt = 0;
+		let counter = document.getElementById('counter_gosha');
+		setInterval(function() {
+			cnt++;
+			counter.textContent = cnt;
+		}, 1000);
+
+		let eatenCnt = 0;
+		let eatButton = document.getElementById('eat_gosha');
+		let eatenGosha = document.getElementById('eaten_gosha');
+		eatButton.onclick = () => {
+			if (cnt >= 10){
+				cnt -= 10;				
+				counter.textContent = cnt;
+				
+				eatenCnt += 10;
+				eatenGosha.textContent = eatenCnt;
+			}
+		}
+	</script>
+</body>
+</html>
